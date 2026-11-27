@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#211322">
+<title>Until We Meet Again ❤️</title>
+<style>
+:root{color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px;overflow:hidden;
+font-family:Georgia,'Times New Roman',serif;color:#fff;
+background:radial-gradient(ellipse at 18% 18%,#81465f 0,transparent 36%),
+radial-gradient(ellipse at 85% 85%,#5b3159 0,transparent 40%),
+linear-gradient(145deg,#170f20,#2b192e 55%,#421f3b)}
+body:before,body:after{content:"";position:fixed;width:340px;height:340px;border:1px solid #ffffff12;border-radius:50%;pointer-events:none}
+body:before{top:-190px;right:-100px}.body:after{bottom:-210px;left:-100px}
+.card{position:relative;width:min(100%,570px);padding:clamp(28px,6vw,54px) clamp(18px,5vw,42px);
+text-align:center;border:1px solid #ffffff30;border-radius:30px;background:#ffffff0d;
+box-shadow:0 24px 90px #08050d80;backdrop-filter:blur(16px)}
+.eyebrow{font:600 11px/1.4 Arial,sans-serif;letter-spacing:.28em;color:#f1bcd0}
+h1{font-size:clamp(32px,7vw,49px);font-weight:400;line-height:1.1;margin:13px 0 10px}
+.subtitle{color:#e9c9d7;font:14px/1.6 Arial,sans-serif;margin:0}
+.envelope{font-size:43px;display:block;margin-bottom:17px;filter:drop-shadow(0 5px 12px #0005)}
+.timer{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:35px 0 28px}
+.unit{padding:19px 5px 15px;border-radius:17px;background:linear-gradient(145deg,#ffffff1c,#ffffff09);border:1px solid #ffffff17}
+.number{font:700 clamp(27px,7vw,43px)/1 Arial,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.04em}
+.label{font:600 10px Arial,sans-serif;letter-spacing:.16em;color:#f0bfd2;margin-top:11px}
+.date{font-size:21px;color:#ffd5e5;letter-spacing:.08em}
+.time{font:12px Arial,sans-serif;color:#e8c4d5;margin-top:8px}
+.quote{border-top:1px solid #ffffff26;margin-top:27px;padding-top:22px;font-size:17px;line-height:1.65;font-style:italic;color:#f8e4ed}
+.heart{margin-top:20px;font-size:26px;letter-spacing:.2em}
+.status{font:12px Arial,sans-serif;color:#efbfd2;margin:13px 0 0}
+.sparkle{position:fixed;pointer-events:none;opacity:.35;animation:float 9s ease-in-out infinite}
+.s1{top:9%;left:9%;font-size:22px}.s2{right:10%;top:22%;font-size:17px;animation-delay:-3s}.s3{bottom:12%;right:12%;font-size:24px;animation-delay:-5s}.s4{bottom:18%;left:13%;font-size:15px;animation-delay:-2s}
+@keyframes float{50%{transform:translateY(-17px) rotate(12deg);opacity:.7}}
+@media(max-width:390px){.timer{gap:6px}.unit{padding:16px 2px 13px}.label{font-size:9px;letter-spacing:.1em}}
+@media(prefers-reduced-motion:reduce){.sparkle{animation:none}}
+</style>
+</head>
+<body>
+<div class="sparkle s1">✦</div><div class="sparkle s2">♡</div><div class="sparkle s3">✧</div><div class="sparkle s4">♡</div>
+<main class="card">
+  <span class="envelope">💌</span>
+  <div class="eyebrow">SOME DISTANCES ARE WORTH THE WAIT</div>
+  <h1>Until We Meet Again</h1>
+  <p class="subtitle">Every second brings us closer to our favourite hello.</p>
+  <section class="timer" aria-label="Countdown">
+    <div class="unit"><div class="number" id="days">---</div><div class="label">DAYS</div></div>
+    <div class="unit"><div class="number" id="hours">--</div><div class="label">HOURS</div></div>
+    <div class="unit"><div class="number" id="minutes">--</div><div class="label">MINUTES</div></div>
+    <div class="unit"><div class="number" id="seconds">--</div><div class="label">SECONDS</div></div>
+  </section>
+  <div class="date">♡ 07 · 02 · 2027 ♡</div>
+  <div class="time">1:15 PM · Indian Standard Time (IST)</div>
+  <div class="quote">“Different places, same heartbeat.<br>One more moment closer to you.”</div>
+  <div class="heart">♡ 🫂 ♡</div>
+  <p class="status" id="status">The wait is counting down. The love never does.</p>
+</main>
+<script>
+const target = new Date('2027-02-07T13:15:00+05:30').getTime();
+const ids=['days','hours','minutes','seconds'];
+function update(){
+  const remaining=target-Date.now();
+  if(remaining<=0){
+    ids.forEach(id=>document.getElementById(id).textContent='00');
+    document.getElementById('status').textContent='IT’S TIME. GO HUG YOUR PERSON! ❤️';
+    return;
+  }
+  const values=[
+    Math.floor(remaining/86400000),
+    Math.floor((remaining%86400000)/3600000),
+    Math.floor((remaining%3600000)/60000),
+    Math.floor((remaining%60000)/1000)
+  ];
+  values.forEach((value,index)=>document.getElementById(ids[index]).textContent=String(value).padStart(2,'0'));
+}
+update();setInterval(update,1000);
+</script>
+</body>
+</html>
